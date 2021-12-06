@@ -1,0 +1,10 @@
+.ItemList {
+	margin-top: 40px;
+}
+.ItemList-item {
+	display: flex;
+	justify-content: space-between;
+}
+.ItemList-item:not(:nth-child(1)) {
+	margin-top: 10px;
+}

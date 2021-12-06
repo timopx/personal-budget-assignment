@@ -1,0 +1,20 @@
+.UserRow {
+	display: flex;
+	justify-content: space-between;
+	align-items: baseline;
+}
+.UserRow-icon {
+	font-size: 20px;
+}
+.UserRow-user {
+	display: flex;
+	align-items: center;
+}
+.UserRow-name {
+	font-weight: bold;
+	margin-left: 5px;
+}
+.UserRow-budget {
+	text-decoration: underline;
+	font-size: 1.25rem;
+}
