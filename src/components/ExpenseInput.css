@@ -1,0 +1,35 @@
+.ExpenseInput {
+	margin-top: 40px;
+}
+.ExpenseInput-heading {
+	font-style: italic;
+}
+.ExpenseInput-input-container {
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+}
+.ExpenseInput-named-input {
+	margin-right: 15px;
+}
+.ExpenseInput-named-input>input {
+	height: 23px;
+	width: 125px;
+	padding: 1px;
+	border: 1px solid rgb(94, 94, 94);
+	border-radius: 0;
+	background-color: rgb(170, 170, 170);
+}
+.ExpenseInput-named-input>input:focus {
+	height: 23px;
+	width: 125px;
+	padding: 0;
+	border: 2px solid rgb(94, 94, 94);
+	border-radius: 0;
+	background-color: rgb(170, 170, 170);
+}
+.ExpenseInput-submit {
+	font-size: 23px;
+	margin-bottom: 2px;
+	cursor: pointer;
+}
