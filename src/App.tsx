@@ -1,75 +1,43 @@
-import React from 'react';
+import { Routes, BrowserRouter, Route } from 'react-router-dom';
 import './App.css';
-import ExpenseInput from './components/ExpenseInput';
-import ItemList from './components/ItemList';
-import RemainingBudget from './components/RemainingBudget';
-import UserRow from './components/UserRow';
+import BudgetListing from './pages/BudgetListing';
+import Home from './pages/Home';
 
-interface IAppState {
-	remainingBudget: number,
-	items: Array<{name: string, price: number | null}>
+const App = (): JSX.Element => {
+	return (
+		<div className="App">
+			<BrowserRouter>
+				<Routes>
+					<Route path="/" element={ <Home/> }></Route>
+					<Route path="/BudgetListing" element={ <BudgetListing /> }></Route>
+					<Route path="/BudgetListing/:userId" element={ <BudgetListing /> }></Route>
+				</Routes>
+			</BrowserRouter>
+		</div>
+	)
 }
 
-export default class App extends React.Component<{}, IAppState>
-{
-	private budget: number = 2000; // would probably be resolved from an API in the real world
+export default App;
 
-	constructor()
-	{
-		super({});
+/*
+Create application using React using features:
 
-		this.state = {
-			remainingBudget: this.budget,
-			items: []
-		}
+- [x] Router - your app should have at least 2 routes (pages) -> `App.tsx` :11-:13
+- [x] bonus: dynamic route, i.e. using :someId -> `App.tsx` :13
 
-		this.addItem = this.addItem.bind(this);
-	}
+- [x] use hooks - useState, useEffect -> `BudgetListing.tsx`
+- [] bonus: useContext, useReducer
 
-	addItem(name: string, price: number | ""): boolean
-	{
-		if(price === "" || price > this.state.remainingBudget || price < 0.01
-			|| name === "")
-			return false;
+- [x] pass prop(s) to child component -> `BudgetListing.tsx` :78
+- [x] update state of parent component from child using any technique -> `ExpenseInput.tsx` :34
+- [x] dynamic styles based on state/prop of the component, f.e. red/green indicators -> `RemainingBudget.tsx` :16
 
-		const roundedPrice = Math.round(price * 100) / 100;
+- [x] fetch and display data from external API, f.e. using some mock response -> `BudgetListing.tsx` :39
+- [x] bonus: handling/displaying error -> `BudgetListing.tsx` :41, :53; `ItemList.tsx` :23
+- [x] bonus2: add loading indicator/placeholder - f.e loading icon  -> `ItemList.tsx` :21
 
-		this.setState((prevState) => {
-			const newState = {...prevState};
-			
-			newState.items.push({name: name, price: roundedPrice});
-
-			this.updateRemainingBudget();
-
-			return newState;
-		});
-
-		return true;
-	}
-
-	updateRemainingBudget()
-	{
-		let newRemainingBudget: number = this.budget;
-
-		for(const item of this.state.items)
-			newRemainingBudget -= item.price === null ? 0 : item.price;
-
-		// evetything should be rounded to 2 decimal places to prevent ugly javascript math
-		newRemainingBudget = Math.round(newRemainingBudget * 100) / 100;
-
-		this.setState({remainingBudget: newRemainingBudget});
-	}
-
-	render()
-	{
-		return (
-			<div className="App">
-				<h1 className="App-title">Personal budget</h1>
-				<UserRow firstName="John" lastName="Doe" budget={this.budget} />
-				<RemainingBudget remainingBudget={this.state.remainingBudget} />
-				<ExpenseInput addItem={this.addItem} />
-				<ItemList items={this.state.items} />
-			</div>
-		);
-	}
-}
+TODO: Make a prompt for /BudgetListing without /:userId
+TODO: Maybe consider trying out HoC
+TODO: Make use of useContext, useReducer
+TODO: Adding an item should add an item to the API aswell
+*/

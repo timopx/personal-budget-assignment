@@ -1,25 +1,32 @@
+import { BudgetItemArray } from '../models/Budget.model';
 import './ItemList.css';
 
 interface IItemListProps {
-	items: Array<{name: string, price: number | null}>
+	items: BudgetItemArray,
+	error: boolean,
+	loading: boolean
 }
 
 function ItemList(props: IItemListProps): JSX.Element
 {
-	const itemListItems = props.items.map((prop) => {
-		return (
-			<div className="ItemList-item">
-				<div className="ItemList-item-name">{prop.name}</div>
-				<div className="ItemList-item-price">{prop.price}</div>
-			</div>
-		);
-	});
+	const renderItemsOrMessage = () => {
+		if(props.items.length > 0) {
+			return props.items.map((item) => (
+				<div className="ItemList-item" key={item.id}>
+					<div className="ItemList-item-name">{item.name}</div>
+					<div className="ItemList-item-price">{item.price}</div>
+				</div>
+			));
+		} else if(props.loading) {
+			return <div className='ItemList-item' key="loading-message">Loading items...</div>;
+		} else if(props.error) {
+			return <div className='ItemList-item' key="error-message" style={{"color": "#cc0000"}}>An error occured trying to retrieve data.</div>;
+		}
+	}
 
 	return (
 		<div className="ItemList">
-			{itemListItems.length === 0
-				? <div className="ItemList-item">You haven't added anything to the list yet.</div>
-				: itemListItems}
+			{renderItemsOrMessage()}
 		</div>
 	);
 }

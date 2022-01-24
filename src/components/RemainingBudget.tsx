@@ -13,7 +13,7 @@ function RemainingBudget(props: IRemainingBudgetProps): JSX.Element
 			<FontAwesomeIcon icon={faDollarSign} size="2x" className="RemainingBudget-icon" />
 			<div className="RemainingBudget-textvalue-container">
 				<div className="RemainingBudget-text">remaining</div>
-				<div className="RemainingBudget-value">{props.remainingBudget}</div>
+				<div className="RemainingBudget-value" style={ {color: props.remainingBudget < 0 ? "#cc0000" : "inherit"} }>{props.remainingBudget}</div>
 			</div>
 		</div>
 	);
