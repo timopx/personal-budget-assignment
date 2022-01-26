@@ -1,25 +1,22 @@
-import { BudgetItemArray } from '../models/Budget.model';
+import { useContext } from 'react';
+import { BudgetContext } from '../store/BudgetProvider';
 import './ItemList.css';
 
-interface IItemListProps {
-	items: BudgetItemArray,
-	error: boolean,
-	loading: boolean
-}
-
-function ItemList(props: IItemListProps): JSX.Element
+function ItemList(): JSX.Element
 {
+	const { items, loading, error } = useContext(BudgetContext);
+
 	const renderItemsOrMessage = () => {
-		if(props.items.length > 0) {
-			return props.items.map((item) => (
+		if(items.length > 0) {
+			return items.map((item) => (
 				<div className="ItemList-item" key={item.id}>
 					<div className="ItemList-item-name">{item.name}</div>
 					<div className="ItemList-item-price">{item.price}</div>
 				</div>
 			));
-		} else if(props.loading) {
+		} else if(loading) {
 			return <div className='ItemList-item' key="loading-message">Loading items...</div>;
-		} else if(props.error) {
+		} else if(error) {
 			return <div className='ItemList-item' key="error-message" style={{"color": "#cc0000"}}>An error occured trying to retrieve data.</div>;
 		}
 	}
