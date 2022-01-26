@@ -22,22 +22,24 @@ export default App;
 /*
 Create application using React using features:
 
-- [x] Router - your app should have at least 2 routes (pages) -> `App.tsx` :11-:13
-- [x] bonus: dynamic route, i.e. using :someId -> `App.tsx` :13
+// *SOME OF THESE MAY NOT BE PRESENT HERE ANYMORE DUE TO MOVING STUFF TO MAKE USE OF CONTEXTS & REDUCERS*
+// YOU MAY CHECKOUT 3239b1f161ea00cc376d435208c61298352a43b0 IF THERE'S SOMETHING MISSING e.g. PASSING PROP TO CHILD COMPONENT
 
-- [x] use hooks - useState, useEffect -> `BudgetListing.tsx`
-- [] bonus: useContext, useReducer
+- [x] Router - your app should have at least 2 routes (pages)
+- [x] bonus: dynamic route, i.e. using :someId
 
-- [x] pass prop(s) to child component -> `BudgetListing.tsx` :78
-- [x] update state of parent component from child using any technique -> `ExpenseInput.tsx` :34
-- [x] dynamic styles based on state/prop of the component, f.e. red/green indicators -> `RemainingBudget.tsx` :16
+- [x] use hooks - useState, useEffect
+- [x] bonus: useContext, useReducer
 
-- [x] fetch and display data from external API, f.e. using some mock response -> `BudgetListing.tsx` :39
-- [x] bonus: handling/displaying error -> `BudgetListing.tsx` :41, :53; `ItemList.tsx` :23
-- [x] bonus2: add loading indicator/placeholder - f.e loading icon  -> `ItemList.tsx` :21
+- [x] pass prop(s) to child component
+- [x] update state of parent component from child using any technique
+- [x] dynamic styles based on state/prop of the component, f.e. red/green indicators
+
+- [x] fetch and display data from external API, f.e. using some mock response
+- [x] bonus: handling/displaying error
+- [x] bonus2: add loading indicator/placeholder - f.e loading icon
 
 TODO: Make a prompt for /BudgetListing without /:userId
 TODO: Maybe consider trying out HoC
-TODO: Make use of useContext, useReducer
 TODO: Adding an item should add an item to the API aswell
 */
